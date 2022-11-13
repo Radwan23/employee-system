@@ -15,13 +15,16 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('fullname');
+            $table->string('username')->nullable(false)->unique();
+            $table->string('password')->nullable(false);
+            $table->string('qr_code')->nullable(false)->unique();
+            $table->foreignId('department_id')->on('department')->nullable(false);
+            $table->boolean('is_admin')->nullable(false)->default(false);
+            $table->boolean('is_logingin')->nullable(false);
+            $table->boolean('is_archived')->nullable(false)->default(false);
             $table->timestamps();
-        });
+            });
     }
 
     /**
