@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('rates', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('rated_user_id')->on('user')->nullable(false);
-            $table->foreignId('rater_user_id')->on('user')->nullable(false);
-            $table->double('rate', 4, 2)->nullable(false);
-            $table->dateTime('rated_at')->nullable(false);
+            $table->unsignedBigInteger('rated_user_id');
+            $table->unsignedBigInteger('rater_user_id');
+            $table->double('rate', 4, 2);
+            $table->dateTime('rated_at');
             $table->timestamps();
         });
     }
