@@ -23,6 +23,7 @@ return new class extends Migration
             $table->boolean('is_admin')->default(false);
             $table->boolean('is_logingin')->default(false);
             $table->boolean('is_archived')->default(false);
+            $table->rememberToken();
             $table->timestamps();
             });
     }
